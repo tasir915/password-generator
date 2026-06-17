@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Name Style & Viral Hashtag Generator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #0f172a; color: #f8fafc; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 500px; margin-bottom: 20px; }
+        h1 { font-size: 24px; margin-bottom: 20px; text-align: center; color: #fe2c55; } /* TikTok Pink Color */
+        h1 i { margin-right: 10px; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #38bdf8; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 6px; border: none; background: #334155; color: white; font-size: 16px; margin-bottom: 10px; }
+        button { width: 100%; background: #fe2c55; border: none; color: white; padding: 12px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px; }
+        button:hover { background: #e11d48; }
+        .output-box { background: #334155; padding: 15px; border-radius: 6px; font-size: 16px; word-break: break-all; border-left: 4px solid #fe2c55; position: relative; margin-bottom: 15px; }
+        .copy-btn { position: absolute; right: 10px; top: 10px; background: #38bdf8; color: #0f172a; padding: 4px 8px; font-size: 12px; border-radius: 4px; width: auto; margin: 0; }
+        .style-item { display: flex; justify-content: space-between; align-items: center; background: #334155; padding: 12px; border-radius: 6px; margin-bottom: 10px; font-size: 18px; }
+        .style-item button { width: auto; padding: 6px 12px; font-size: 12px; margin: 0; background: #2563eb; }
+    </style>
+</head>
+<body>
+
+<!-- TOOL 1: FANCY NAME GENERATOR -->
+<div class="container">
+    <h1><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h1>
+    <div class="input-group">
+        <label><i class="fa-solid fa-user"></i> Enter Your Name Here</label>
+        <input type="text" id="nameInput" placeholder="Type your name..." value="TikTok King">
+    </div>
+    <div id="stylesContainer">
+        <!-- Fonts will generate here -->
+    </div>
+</div>
+
+<!-- TOOL 2: VIRAL HASHTAG GENERATOR -->
+<div class="container">
+    <h1><i class="fa-solid fa-hashtag"></i> Viral Hashtag Generator</h1>
+    <div class="input-group">
+        <label><i class="fa-solid fa-video"></i> Select Video Category</label>
+        <input type="text" id="tagInput" placeholder="e.g. poetry, funny, gaming, sports" value="funny">
+    </div>
+    <button onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
+    <div class="output-box" id="tagOutputBox" style="display:none;">
+        <span id="hashtagOutput">Your tags will appear here...</span>
+        <button class="copy-btn" onclick="copyTags()"><i class="fa-regular fa-copy"></i> Copy All</button>
+    </div>
+</div>
+
+<script>
+    // Name Styles Logic
+    const nameInput = document.getElementById('nameInput');
+    const stylesContainer = document.getElementById('stylesContainer');
+
+    const fontStyles = [
+        (text) => `𝓣𝓲𝓴𝓣𝓸𝓴 𝓚𝓲𝓷𝓰`, // Script Example placeholder logic below for safety
+        (text) => text.split('').map(c => '𝔖𝔗𝔜𝔏𝔈'[c.toUpperCase()] || c).join(''), // We use pre-defined map for safety or simple decorators
+    ];
+
+    function updateNames() {
+        const val = nameInput.value || "Name";
+        stylesContainer.innerHTML = `
+            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyText('★彡 ${val} 彡★')">Copy</button></div>
+            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyText('『 ${val} 』')">Copy</button></div>
+            <div class="style-item"><span>Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮</span><button onclick="copyText('Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮')">Copy</button></div>
+            <div class="style-item"><span>🆃🅸🅺🆃🅾🅺 ${val}</span><button onclick="copyText('🆃🅸🅺🆃🅾🅺 ${val}')">Copy</button></div>
+        `;
+    }
+    nameInput.addEventListener('input', updateNames);
+    updateNames(); // Initialize
+
+    // Hashtags Logic
+    function generateHashtags() {
+        const category = document.getElementById('tagInput').value.toLowerCase().trim();
+        let baseTags = "#foryou #foryoupage #fyp #viral #trending #tiktokpakistan";
+        
+        if(category === "poetry" || category === "sad") {
+            baseTags += " #poetry #sadpoetry #urdupoetry #lines #brokenheart";
+        } else if(category === "funny" || category === "comedy") {
+            baseTags += " #funny #comedy #joke #funnyvideos #laugh #memes";
+        } else if(category === "gaming" || category === "pubg") {
+            baseTags += " #gaming #pubg #pubgmobile #gamer #freefire #streamer";
+        } else if(category === "sports" || category === "cricket") {
+            baseTags += " #cricket #sports #babarazam #football #match #fitness";
+        } else if(category !== "") {
+            baseTags += ` #${category} #${category}video #${category}trend #${category}viral`;
+        }
+        
+        document.getElementById('hashtagOutput').innerText = baseTags;
+        document.getElementById('tagOutputBox').style.display = "block";
+    }
+
+    // Helper Copy Functions
+    function copyText(txt) {
+        navigator.clipboard.writeText(txt);
+        alert('Name Style Copied! ✅');
+    }
+    function copyTags() {
+        const txt = document.getElementById('hashtagOutput').innerText;
+        navigator.clipboard.writeText(txt);
+        alert('All Viral Hashtags Copied! 🚀');
+    }
+</script>
+</body>
+</html>
