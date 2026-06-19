@@ -122,6 +122,15 @@
         textarea.remove();
         alert('Password copied to clipboard! ✅');
     });
+      const nameInput = document.getElementById('nameInput');
+    const stylesContainer = document.getElementById('stylesContainer');
+
+    function updateNames() {
+        const val = nameInput.value || "Name";
+        stylesContainer.innerHTML = `
+            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
+            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
 </script>
 </body>
 </html>
