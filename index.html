@@ -1,19 +1,56 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Strong Password Generator Tool with Icons</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4880662930642556"
-     crossorigin="anonymous"></script>
-    <!-- Tab Icon (Favicon) Line -->
-    <link rel="icon" type="img/x-icon" href="">
+    <title>Advanced 3D Strong Password Generator</title>
+    
+    <!-- Tab Icon (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔑</text></svg>">
     
     <!-- Font Awesome Icons Link -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <!-- Google AdSense Code -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-       body { background: #0f172a; color: #f8fafc; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 20px; gap: 20px; }
- .container { background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 450px; }
+        
+        /* Movie Style Live Splash Screen Loader With Developer Name */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loader-logo {
+            font-size: 55px; color: #38bdf8;
+            animation: pulse 1.5s infinite alternate;
+            margin-bottom: 20px;
+        }
+        .loader-text {
+            font-family: 'Courier New', Courier, monospace;
+            color: #10b981; font-weight: bold; font-size: 20px;
+            letter-spacing: 2px;
+            overflow: hidden; border-right: 3px solid #10b981;
+            white-space: nowrap; 
+            width: 0;
+            animation: typing 2s steps(25, end) forwards, blink .75s step-end infinite;
+        }
+        @keyframes pulse { to { transform: scale(1.1); text-shadow: 0 0 20px #38bdf8; } }
+        @keyframes typing { from { width: 0 } to { width: 290px } } /* Fixed width for text alignment */
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
+
+        /* Main Website Layout */
+        body { 
+            background: #0f172a; color: #f8fafc; 
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+            min-height: 100vh; padding: 40px 20px; gap: 25px; 
+        }
+        .container { background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 450px; }
         h1 { font-size: 24px; margin-bottom: 20px; text-align: center; color: #38bdf8; }
         h1 i { margin-right: 10px; }
         .result-container { display: flex; background: #334155; border-radius: 6px; padding: 12px; margin-bottom: 20px; justify-content: space-between; align-items: center; }
@@ -22,22 +59,29 @@
         #copy:hover { background: #0ea5e9; }
         .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .setting label { display: flex; align-items: center; gap: 10px; }
-        .setting label i { color: #94a3b8; width: 16px; text-align: center; }
         input[type="number"] { width: 60px; padding: 5px; border-radius: 4px; border: none; text-align: center; font-size: 16px; background: #334155; color: white; }
         button.generate { width: 100%; background: #10b981; border: none; color: white; padding: 12px; font-size: 18px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        button.generate:hover { background: #059669; }
+        
+        .seo-text { max-width: 450px; text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; margin-top: 10px; }
+        .footer { width: 100%; max-width: 450px; text-align: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; font-size: 14px; color: #94a3b8; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
 
+<!-- MOVIE STYLE SPLASH LOADER SCREEN WITH YOUR NAME -->
+<div id="splash-screen">
+    <div class="loader-logo"><i class="fa-solid fa-terminal"></i></div>
+    <div class="loader-text">TASIR_ABBAS_SYSTEM...</div>
+</div>
+
+<!-- MAIN TOOL INTERFACE -->
 <div class="container">
     <h1><i class="fa-solid fa-shield-halved"></i>Password Generator</h1>
-    
     <div class="result-container">
         <span id="password">Click Generate</span>
         <button id="copy"><i class="fa-regular fa-copy"></i> Copy</button>
     </div>
-    
     <div class="settings">
         <div class="setting">
             <label><i class="fa-solid fa-ruler-horizontal"></i> Password Length</label>
@@ -60,15 +104,30 @@
             <input type="checkbox" id="symbols" checked>
         </div>
     </div>
-    
     <button class="generate" id="generate"><i class="fa-solid fa-key"></i> Generate Password</button>
 </div>
-<div style="max-width: 450px; margin: 20px auto; color: #94a3b8; font-size: 14px; line-height: 1.6;">
+
+<div class="seo-text">
     <h2>Why Use an Online Password Generator?</h2>
-    <p>Cyber security is very important today. Hackers can easily guess simple passwords. Our free online strong password generator tool helps you create random, secure passwords with uppercase letters, lowercase letters, numbers, and special characters. It keeps your Facebook, Google, and Bank accounts 100% safe.</p>
+    <p>Cyber security is very important today. Our free online strong password generator tool helps you create random secure keys.</p>
+</div>
+
+<div class="footer">
+    <p>Designed & Developed by</p>
+    <div class="badge">Tasir Abbas Developer Taunsa</div>
 </div>
 
 <script>
+    // Splash Screen Timer Logic (2.2 Seconds to let typing animation complete)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+        }, 2200);
+    });
+
+    // Password Generation Code
     const passwordEl = document.getElementById('password');
     const lengthEl = document.getElementById('length');
     const uppercaseEl = document.getElementById('uppercase');
@@ -91,7 +150,6 @@
         const hasUpper = uppercaseEl.checked;
         const hasNumber = numbersEl.checked;
         const hasSymbol = symbolsEl.checked;
-        
         passwordEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
     });
 
@@ -99,9 +157,7 @@
         let generatedPassword = '';
         const typesCount = lower + upper + number + symbol;
         const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item));
-        
         if(typesCount === 0) return '';
-
         for(let i = 0; i < length; i += typesCount) {
             typesArr.forEach(type => {
                 const funcName = Object.keys(type);
@@ -120,31 +176,8 @@
         textarea.select();
         document.execCommand('copy');
         textarea.remove();
-        alert('Password copied to clipboard! ✅');
+        alert('Password copied! ✅');
     });
-      const nameInput = document.getElementById('nameInput');
-    const stylesContainer = document.getElementById('stylesContainer');
-
-    function updateNames() {
-        const val = nameInput.value || "Name";
-        stylesContainer.innerHTML = `
-            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
-            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
-            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
 </script>
-    <!-- Professional Developer Footer -->
-<div style="width: 100%; max-width: 450px; text-align: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #334155; font-size: 14px; color: #94a3b8;">
-    <p style="margin-bottom: 5px;">Designed & Developed with <i class="fa-solid fa-heart" style="color: #fe2c55; animation: beat 1s infinite alternate;"></i> by</p>
-    <div style="display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);">
-        <i class="fa-solid fa-code" style="margin-right: 5px;"></i> Tasir Abbas Developer Taunsa
-    </div>
-</div>
-
-<style>
-@keyframes beat {
-    to { transform: scale(1.2); }
-}
-</style>
-
 </body>
 </html>
