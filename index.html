@@ -3,194 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Tools - Password & TikTok Growth Kit</title>
+    <title>TikTok Name Styler & Viral Hashtags Generator</title>
     
-    <!-- Tab Icon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <!-- Tab Icon (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
+    
+    <!-- Font Awesome Icons Link -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
-    <!-- Google AdSense Code -->
+    <!-- Google AdSense Code (Safe & Connected) -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        /* Movie Style Splash Loader */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #020617;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .loader-logo { font-size: 55px; color: #38bdf8; animation: pulse 1.5s infinite alternate; margin-bottom: 20px; }
-        .loader-text {
-            font-family: 'Courier New', Courier, monospace;
-            color: #10b981; font-weight: bold; font-size: 20px; letter-spacing: 2px;
-            overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0;
-            animation: typing 2s steps(25, end) forwards, blink .75s step-end infinite;
-        }
-        @keyframes pulse { to { transform: scale(1.1); text-shadow: 0 0 20px #38bdf8; } }
-        @keyframes typing { from { width: 0 } to { width: 290px } }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
-
-        /* Main Page Grid Layout */
+        /* Premium Cyberpunk Movie Style Background */
         body { 
-            background: #0f172a; color: #f8fafc; 
-            display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
-            min-height: 100vh; padding: 40px 20px; gap: 30px; 
+            background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: #f8fafc; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+            gap: 25px; 
         }
-        .container { background: #1e293b; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 450px; }
         
-        h1, h2 { font-size: 22px; margin-bottom: 20px; text-align: center; color: #38bdf8; }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 3D Glassmorphism Container */
+        .container { 
+            background: rgba(30, 41, 59, 0.75); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1); 
+            width: 100%; 
+            max-width: 460px; 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* TikTok Theme Pink Title */
+        h1 { font-size: 24px; margin-bottom: 20px; text-align: center; color: #fe2c55; text-shadow: 0 2px 12px rgba(254, 44, 85, 0.3); }
         h1 i, h2 i { margin-right: 10px; }
         
-        /* Input & Controls */
-        .result-container { display: flex; background: #334155; border-radius: 6px; padding: 12px; margin-bottom: 15px; justify-content: space-between; align-items: center; }
-        .result-text { font-size: 16px; font-weight: bold; word-break: break-all; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #38bdf8; font-size: 14px; }
         
-        .copy-btn { background: #38bdf8; border: none; color: #0f172a; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 16px; margin-bottom: 10px; outline: none; }
+        input[type="text"]:focus { border-color: #fe2c55; box-shadow: 0 0 8px rgba(254, 44, 85, 0.4); }
+        
+        /* Shiny Buttons */
+        button.action-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 13px; font-size: 17px; border-radius: 8px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
+        button.action-btn:hover { transform: translateY(-1px); background: linear-gradient(135deg, #e11d48, #fe2c55); }
+        
+        /* Font Style List Items */
+        .style-item { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 14px; border-radius: 8px; margin-bottom: 12px; font-size: 18px; border-left: 4px solid #38bdf8; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        .style-item button { background: #2563eb; color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .style-item button:hover { background: #1d4ed8; }
+        
+        /* Hashtag Output Box */
+        .output-box { background: #0f172a; padding: 15px; border-radius: 8px; font-size: 16px; word-break: break-all; border-left: 4px solid #fe2c55; position: relative; margin-top: 15px; line-height: 1.5; color: #10b981; font-weight: bold; }
+        .copy-btn { position: absolute; right: 10px; top: 10px; background: #38bdf8; color: #0f172a; padding: 4px 8px; font-size: 12px; border-radius: 4px; width: auto; cursor: pointer; font-weight: bold; border: none; }
         .copy-btn:hover { background: #0ea5e9; }
         
-        .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; }
-        input[type="text"], input[type="number"] { width: 100%; padding: 10px; border-radius: 6px; border: none; background: #334155; color: white; font-size: 16px; margin-bottom: 15px; }
-        input[type="number"] { width: 60px; text-align: center; margin-bottom: 0; }
+        .seo-text { max-width: 460px; text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; margin-top: 10px; background: rgba(30, 41, 59, 0.4); padding: 15px; border-radius: 12px; }
+
+        /* Professional Developer Footer */
+        .footer { width: 100%; max-width: 460px; text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #94a3b8; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); margin-top: 5px; }
         
-        button.action-btn { width: 100%; background: #10b981; border: none; color: white; padding: 12px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        button.action-btn:hover { background: #059669; }
-        
-        /* Font Output List */
-        .font-item { background: #334155; padding: 12px; border-radius: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        
-        .seo-text { max-width: 450px; text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; }
-        .footer { width: 100%; max-width: 450px; text-align: center; border-top: 1px solid #334155; padding-top: 15px; font-size: 14px; color: #94a3b8; }
-        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; }
+        @keyframes beat { to { transform: scale(1.2); } }
     </style>
 </head>
 <body>
 
-<!-- MOVIE LOADER -->
-<div id="splash-screen">
-    <div class="loader-logo"><i class="fa-solid fa-terminal"></i></div>
-    <div class="loader-text">TASIR_ABBAS_SYSTEM...</div>
-</div>
-
-<!-- TOOL 1: PASSWORD GENERATOR -->
+<!-- TOOL 1: FANCY NAME STYLER -->
 <div class="container">
-    <h1><i class="fa-solid fa-shield-halved"></i>Password Generator</h1>
-    <div class="result-container">
-        <span id="password" class="result-text">Click Generate</span>
-        <button class="copy-btn" id="copy-pass"><i class="fa-regular fa-copy"></i> Copy</button>
+    <h1><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h1>
+    <div class="input-group">
+        <label><i class="fa-solid fa-user-ninja"></i> Enter Your Name Here</label>
+        <input type="text" id="nameInput" placeholder="Type your name..." value="Tasir Tech">
     </div>
-    <div class="setting">
-        <label>Password Length</label>
-        <input type="number" id="length" min="4" max="20" value="12">
+    <div id="stylesContainer">
+        <!-- Fonts will automatically generate here via JS -->
     </div>
-    <div class="setting"><label>Include Uppercase</label><input type="checkbox" id="uppercase" checked></div>
-    <div class="setting"><label>Include Lowercase</label><input type="checkbox" id="lowercase" checked></div>
-    <div class="setting"><label>Include Numbers</label><input type="checkbox" id="numbers" checked></div>
-    <div class="setting"><label>Include Symbols</label><input type="checkbox" id="symbols" checked></div>
-    <button class="action-btn" id="generate-pass" style="margin-top:10px;"><i class="fa-solid fa-key"></i> Generate</button>
 </div>
 
-<!-- TOOL 2: TIKTOK NAME STYLER -->
+<!-- TOOL 2: VIRAL HASHTAG GENERATOR -->
 <div class="container">
-    <h2><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h2>
-    <input type="text" id="name-input" placeholder="Type your name here...">
-    <div id="font-results">
-        <div class="font-item"><span class="result-text">Your Name Font 1</span><button class="copy-btn" onclick="copyText('Your Name Font 1')">Copy</button></div>
+    <h1><i class="fa-solid fa-bolt"></i> Viral Hashtag Generator</h1>
+    <div class="input-group">
+        <label><i class="fa-solid fa-video"></i> Enter Video Topic (poetry, funny, tech, gaming)</label>
+        <input type="text" id="tagInput" placeholder="e.g. poetry, funny, tech, gaming" value="tech">
+    </div>
+    <button class="action-btn" onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
+    
+    <div class="output-box" id="tagOutputBox" style="display:none;">
+        <span id="hashtagOutput">Your viral tags will appear here...</span>
+        <button class="copy-btn" onclick="copyTags()"><i class="fa-regular fa-copy"></i> Copy All</button>
     </div>
 </div>
 
-<!-- TOOL 3: TIKTOK VIRAL HASHTAGS -->
-<div class="container">
-    <h2><i class="fa-solid fa-hashtag"></i> Viral Hashtags Kit</h2>
-    <div class="result-container">
-        <span id="hashtags-box" class="result-text">#foryou #fyp #viral #trending #coding #taunsa</span>
-        <button class="copy-btn" id="copy-tags"><i class="fa-regular fa-copy"></i> Copy All</button>
-    </div>
-    <button class="action-btn" id="refresh-tags" style="background:#fe2c55;"><i class="fa-solid fa-rotate"></i> Get New Viral Tags</button>
-</div>
-
-<!-- SEO RANKING BLOCK -->
+<!-- SEO Text for Google ranking -->
 <div class="seo-text">
-    <h3>Why Use Tasir Cyber Tools Matrix?</h3>
-    <p>We provide advanced algorithmic random keys to safeguard your profiles, combined with high-engagement styling assets to boost social optimization metrics exponentially.</p>
+    <h3>Get Famous on Social Media for Free</h3>
+    <p>Use our advanced TikTok Name Style tool to create fancy fonts with cool symbols. Generate viral trending hashtags to push your videos directly to the ForYou page instantly.</p>
 </div>
 
-<!-- FOOTER -->
+<!-- Professional Developer Footer -->
 <div class="footer">
-    <p>Designed & Developed by</p>
-    <div class="badge">Tasir Abbas Developer Taunsa</div>
+    <p>Designed & Developed with <i class="fa-solid fa-heart" style="color: #fe2c55; animation: beat 1s infinite alternate; display: inline-block;"></i> by</p>
+    <div class="badge">
+        <i class="fa-solid fa-code" style="margin-right: 5px;"></i> Tasir Abbas Developer Taunsa
+    </div>
 </div>
 
 <script>
-    // Splash Loader Timeout
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.getElementById('splash-screen').style.opacity = '0';
-            document.getElementById('splash-screen').style.visibility = 'hidden';
-        }, 2000);
-    });
+    // --- TikTok Name Styles Logic ---
+    const nameInput = document.getElementById('nameInput');
+    const stylesContainer = document.getElementById('stylesContainer');
 
-    // 1. PASSWORD GENERATOR CODES
-    const passwordEl = document.getElementById('password');
-    const lengthEl = document.getElementById('length');
-    const uppercaseEl = document.getElementById('uppercase');
-    const lowercaseEl = document.getElementById('lowercase');
-    const numbersEl = document.getElementById('numbers');
-    const symbolsEl = document.getElementById('symbols');
-    const generatePassBtn = document.getElementById('generate-pass');
-    const copyPassBtn = document.getElementById('copy-pass');
+    function updateNames() {
+        const val = nameInput.value || "Name";
+        stylesContainer.innerHTML = `
+            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyStyleText('★彡 ${val} 彡★')">Copy</button></div>
+            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyStyleText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyStyleText('『 ${val} 』')">Copy</button></div>
+            <div class="style-item"><span>Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮</span><button onclick="copyStyleText('Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮')">Copy</button></div>
+            <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyStyleText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
+        `;
+    }
+    nameInput.addEventListener('input', updateNames);
+    updateNames(); // Page load par run karne ke liye
 
-    const randomFunc = {
-        lower: () => String.fromCharCode(Math.floor(Math.random() * 26) + 97),
-        upper: () => String.fromCharCode(Math.floor(Math.random() * 26) + 65),
-        number: () => String.fromCharCode(Math.floor(Math.random() * 10) + 48),
-        symbol: () => '!@#$%^&*()_+'[Math.floor(Math.random() * 12)]
-    };
-
-    generatePassBtn.addEventListener('click', () => {
-        const length = +lengthEl.value;
-        const hasLower = lowercaseEl.checked;
-        const hasUpper = uppercaseEl.checked;
-        const hasNumber = numbersEl.checked;
-        const mainSymbol = symbolsEl.checked;
+    // --- TikTok Hashtags Logic ---
+    function generateHashtags() {
+        const category = document.getElementById('tagInput').value.toLowerCase().trim();
+        let baseTags = "#foryou #foryoupage #fyp #viral #trending #tiktokpakistan";
         
-        let generatedPassword = '';
-        const typesCount = hasLower + hasUpper + hasNumber + mainSymbol;
-        const typesArr = [{lower: hasLower}, {upper: hasUpper}, {number: hasNumber}, {symbol: mainSymbol}].filter(item => Object.values(item)[0]);
-        
-        if(typesCount === 0) return;
-        for(let i=0; i<length; i+=typesCount) {
-            typesArr.forEach(type => {
-                const funcName = Object.keys(type)[0];
-                generatedPassword += randomFunc[funcName]();
-            });
+        if(category === "poetry" || category === "sad") {
+            baseTags += " #poetry #urdupoetry #sadlines #poetrystatus #brokenheart";
+        } else if(category === "funny" || category === "comedy") {
+            baseTags += " #funny #comedy #joke #funnyvideos #laugh #memes #pakistanicomedy";
+        } else if(category === "gaming" || category === "pubg") {
+            baseTags += " #gaming #pubg #pubgmobile #gamer #freefire #streamer #gaminglife";
+        } else if(category === "tech" || category === "coding") {
+            baseTags += " #tech #coding #programming #developer #technology #software #computer";
+        } else if(category !== "") {
+            baseTags += ` #${category} #${category}video #${category}trend #${category}viral`;
         }
-        passwordEl.innerText = generatedPassword.slice(0, length);
-    });
+        
+        document.getElementById('hashtagOutput').innerText = baseTags;
+        document.getElementById('tagOutputBox').style.display = "block";
+    }
 
-    copyPassBtn.addEventListener('click', () => {
-        const txt = passwordEl.innerText;
-        if(txt === 'Click Generate') return;
+    // --- Helper Copy Functions ---
+    function copyStyleText(txt) {
         navigator.clipboard.writeText(txt);
-        alert('Password Copied! ✅');
-    });
-
-    // 2. TIKTOK NAME STYLER CODES
-    const nameInput = document.getElementById('name-input');
-    const fontResults = document.getElementById('font-results');
-
-    const styles = [
-        text => '🅲🆈🅱🅴🆁 ' + text.toUpperCase(),
-        text => '⚡ ' + text + ' ⚡',
-        text => '『' + text.toUpperCase() + '』',
-        text => '𝔗𝔞𝔰𝔲𝔯 ' + text,
-        text => '✨ ' + text + ' ✨'
-    ];
-
-    nameInput.addEventListener('input', (e) => {
-        const val = e.target.value;
-        if(!val) { fontResults.innerHTML = ''; return; }
+        alert('Stylish Name Copied! ✅');
+    }
+    
+    function copyTags() {
+        const txt = document.getElementById('hashtagOutput').innerText;
+        navigator.clipboard.writeText(txt);
+        alert('All Viral Hashtags Copied! 🚀 Ready for TikTok.');
+    }
+</script>
+</body>
+</html>
