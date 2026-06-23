@@ -3,86 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Tool: Password Generator & TikTok Font Style</title>
+    <title>Advanced 3D Multi-Tool Platform</title>
     
     <!-- Tab Icon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
     
-    <!-- Icons Link -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
-    <!-- Google AdSense Code -->
+    <!-- Google AdSense Connected -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
+        /* Sci-Fi Live Moving Background */
         body { 
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a);
+            background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
             background-size: 400% 400%;
             animation: gradientBG 12s ease infinite;
             color: #f8fafc; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-start; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 40px 20px; 
-            gap: 25px; 
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+            min-height: 100vh; padding: 40px 20px; gap: 25px; 
         }
-        
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .container { 
-            background: rgba(30, 41, 59, 0.75); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 25px; 
-            border-radius: 16px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
-            width: 100%; 
-            max-width: 450px; 
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Movie Style Live Splash Screen Loader */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
-        .pass-title { font-size: 22px; margin-bottom: 15px; text-align: center; color: #38bdf8; }
-        .tiktok-title { font-size: 22px; margin-bottom: 15px; text-align: center; color: #fe2c55; }
+        .loader-logo { font-size: 55px; color: #38bdf8; animation: pulse 1.5s infinite alternate; margin-bottom: 20px; }
+        .loader-text {
+            font-family: 'Courier New', Courier, monospace;
+            color: #10b981; font-weight: bold; font-size: 20px; letter-spacing: 2px;
+            overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0;
+            animation: typing 2s steps(25, end) forwards, blink .75s step-end infinite;
+        }
+        @keyframes pulse { to { transform: scale(1.1); text-shadow: 0 0 20px #38bdf8; } }
+        @keyframes typing { from { width: 0 } to { width: 290px } }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
+
+        /* 3D Container Layout */
+        .container { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 30px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1); width: 100%; max-width: 460px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .pass-title { font-size: 24px; margin-bottom: 20px; text-align: center; color: #38bdf8; }
+        .tiktok-title { font-size: 24px; margin-bottom: 20px; text-align: center; color: #fe2c55; }
         h1 i, h2 i { margin-right: 10px; }
         
-        .result-container { display: flex; background: #334155; border-radius: 6px; padding: 12px; margin-bottom: 15px; justify-content: space-between; align-items: center; }
-        #password { font-size: 16px; font-weight: bold; word-break: break-all; }
-        
-        #copy { background: #38bdf8; border: none; color: #0f172a; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .result-container { display: flex; background: #0f172a; border-radius: 8px; padding: 14px; margin-bottom: 20px; justify-content: space-between; align-items: center; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+        #password { font-size: 18px; font-weight: bold; letter-spacing: 1px; word-break: break-all; }
+        #copy { background: #38bdf8; border: none; color: #0f172a; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; }
         #copy:hover { background: #0ea5e9; }
         
-        button.generate-btn { width: 100%; background: #10b981; border: none; color: white; padding: 12px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 5px; }
-        button.generate-btn:hover { background: #059669; }
+        .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .setting label { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+        input[type="number"] { width: 60px; padding: 5px; border-radius: 4px; border: none; text-align: center; font-size: 16px; background: #0f172a; color: white; }
         
-        button.tiktok-btn { width: 100%; background: #fe2c55; border: none; color: white; padding: 12px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 5px; }
-        button.tiktok-btn:hover { background: #e11d48; }
-
-        .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; }
-        input[type="number"] { width: 55px; padding: 4px; border-radius: 4px; border: none; text-align: center; background: #334155; color: white; }
+        .input-group { margin-bottom: 20px; }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 16px; margin-bottom: 10px; outline: none; }
         
-        input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: none; background: #334155; color: white; font-size: 15px; margin-bottom: 10px; }
+        button.generate-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 14px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        button.action-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 13px; font-size: 17px; border-radius: 8px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; }
         
-        .output-box { background: #334155; padding: 12px; border-radius: 6px; font-size: 15px; word-break: break-all; border-left: 4px solid #fe2c55; position: relative; margin-top: 10px; color: #10b981; font-weight: bold; }
-        .copy-btn { position: absolute; right: 10px; top: 10px; background: #38bdf8; color: #0f172a; padding: 3px 6px; font-size: 11px; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; }
+        .style-item { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 14px; border-radius: 8px; margin-bottom: 12px; font-size: 18px; border-left: 4px solid #38bdf8; }
+        .style-item button { background: #2563eb; color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; }
         
-        .style-item { display: flex; justify-content: space-between; align-items: center; background: #334155; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-size: 16px; }
-        .style-item button { background: #2563eb; color: white; border: none; padding: 5px 10px; font-size: 11px; border-radius: 4px; cursor: pointer; }
-
-        .seo-text { max-width: 450px; text-align: center; color: #94a3b8; font-size: 13px; line-height: 1.5; }
-        .footer { width: 100%; max-width: 450px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 14px; color: #94a3b8; }
-        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 5px 12px; border-radius: 20px; font-weight: bold; margin-top: 5px; }
+        .output-box { background: #0f172a; padding: 15px; border-radius: 8px; font-size: 16px; word-break: break-all; border-left: 4px solid #fe2c55; position: relative; margin-top: 15px; color: #10b981; font-weight: bold; }
+        .copy-btn { position: absolute; right: 10px; top: 10px; background: #38bdf8; color: #0f172a; padding: 4px 8px; font-size: 12px; border-radius: 4px; cursor: pointer; border: none; font-weight: bold; }
+        
+        .seo-text { max-width: 460px; text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; margin-top: 10px; background: rgba(30, 41, 59, 0.4); padding: 15px; border-radius: 12px; }
+        .footer { width: 100%; max-width: 460px; text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #94a3b8; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; }
         @keyframes beat { to { transform: scale(1.2); } }
     </style>
 </head>
 <body>
+
+<!-- MOVIE STYLE LOADER -->
+<div id="splash-screen">
+    <div class="loader-logo"><i class="fa-solid fa-terminal"></i></div>
+    <div class="loader-text">TASIR_ABBAS_SYSTEM...</div>
+</div>
 
 <!-- TOOL 1: PASSWORD GENERATOR -->
 <div class="container">
@@ -93,65 +102,72 @@
     </div>
     <div class="settings">
         <div class="setting">
-            <label>Password Length</label>
+            <label><i class="fa-solid fa-ruler-horizontal"></i> Password Length</label>
             <input type="number" id="length" min="4" max="20" value="12">
         </div>
         <div class="setting">
-            <label>Include Uppercase</label>
+            <label><i class="fa-solid fa-font"></i> Include Uppercase Letters</label>
             <input type="checkbox" id="uppercase" checked>
         </div>
         <div class="setting">
-            <label>Include Lowercase</label>
+            <label><i class="fa-solid fa-text-height"></i> Include Lowercase Letters</label>
             <input type="checkbox" id="lowercase" checked>
         </div>
         <div class="setting">
-            <label>Include Numbers</label>
+            <label><i class="fa-solid fa-hashtag"></i> Include Numbers</label>
             <input type="checkbox" id="numbers" checked>
         </div>
         <div class="setting">
-            <label>Include Symbols</label>
+            <label><i class="fa-solid fa-asterisk"></i> Include Symbols</label>
             <input type="checkbox" id="symbols" checked>
         </div>
     </div>
     <button class="generate-btn" id="generate"><i class="fa-solid fa-key"></i> Generate Password</button>
 </div>
-
-<!-- TOOL 2: TIKTOK NAME STYLE -->
+<!-- TOOL 2: TIKTOK NAME STYLER -->
 <div class="container">
     <h2 class="tiktok-title"><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h2>
     <div class="input-group">
+        <label><i class="fa-solid fa-user-ninja"></i> Enter Your Name Here</label>
         <input type="text" id="nameInput" placeholder="Type your name..." value="Tasir Tech">
     </div>
     <div id="stylesContainer"></div>
 </div>
 
-<!-- TOOL 3: VIRAL HASHTAGS -->
+<!-- TOOL 3: HASHTAG GENERATOR -->
 <div class="container">
-    <h2 class="tiktok-title"><i class="fa-solid fa-hashtag"></i> Viral Hashtag Generator</h2>
+    <h2 class="tiktok-title"><i class="fa-solid fa-bolt"></i> Viral Hashtag Generator</h2>
     <div class="input-group">
-        <input type="text" id="tagInput" placeholder="e.g. poetry, funny, tech" value="tech">
+        <label><i class="fa-solid fa-video"></i> Enter Video Topic (poetry, funny, tech, gaming)</label>
+        <input type="text" id="tagInput" placeholder="e.g. poetry, funny, tech, gaming" value="tech">
     </div>
-    <button class="tiktok-btn" onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
+    <button class="action-btn" onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
     <div class="output-box" id="tagOutputBox" style="display:none;">
-        <span id="hashtagOutput">Your tags will appear here...</span>
-        <button class="copy-btn" onclick="copyTags()">Copy All</button>
+        <span id="hashtagOutput">Your viral tags will appear here...</span>
+        <button class="copy-btn" onclick="copyTags()"><i class="fa-regular fa-copy"></i> Copy All</button>
     </div>
 </div>
 
-<!-- SEO DESCRIPTION -->
 <div class="seo-text">
-    <h3>Why Use an Online Password Generator?</h3>
-    <p>Our free online strong password generator helps protect your identity, while our TikTok tools push your social profile to viral levels.</p>
+    <h3>Advanced Multi-Tool Cyber Platform</h3>
+    <p>Generate secure passwords to protect your network databases and create custom stylish names with viral trending tags for TikTok optimization automatically.</p>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
     <p>Designed & Developed with <i class="fa-solid fa-heart" style="color: #fe2c55; animation: beat 1s infinite alternate; display: inline-block;"></i> by</p>
     <div class="badge">Tasir Abbas Developer Taunsa</div>
 </div>
 
 <script>
-    // --- Password Logic ---
+    // Movie Splash Screen Timer Logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0'; splash.style.visibility = 'hidden';
+        }, 2200);
+    });
+
+    // Password Logic
     const passwordEl = document.getElementById('password');
     const lengthEl = document.getElementById('length');
     const uppercaseEl = document.getElementById('uppercase');
@@ -183,10 +199,7 @@
         const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item));
         if(typesCount === 0) return '';
         for(let i = 0; i < length; i += typesCount) {
-            typesArr.forEach(type => {
-                const funcName = Object.keys(type);
-                generatedPassword += randomFunc[funcName]();
-            });
+            typesArr.forEach(type => { generatedPassword += randomFunc[Object.keys(type)](); });
         }
         return generatedPassword.slice(0, length);
     }
@@ -195,14 +208,12 @@
         const textarea = document.createElement('textarea');
         const password = passwordEl.innerText;
         if(!password || password === 'Click Generate') return;
-        textarea.value = password;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        textarea.remove();
+        textarea.value = password; document.body.appendChild(textarea);
+        textarea.select(); document.execCommand('copy'); textarea.remove();
         alert('Password copied! ✅');
     });
-    // --- TikTok Tools JavaScript ---
+
+    // TikTok Logic
     const nameInput = document.getElementById('nameInput');
     const stylesContainer = document.getElementById('stylesContainer');
 
@@ -212,8 +223,7 @@
             <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
             <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
             <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
-            <div class="style-item"><span>Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮</span><button onclick="copyTikTokText('Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮')">Copy</button></div>
-            <div class="style-item"><span>🆃🅸🅺🆃🅾🆄 ${val}</span><button onclick="copyTikTokText('🆃🅸🅺🆃🅾🆄 ${val}')">Copy</button></div>
+            <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyTikTokText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
         `;
     }
     nameInput.addEventListener('input', updateNames);
@@ -222,31 +232,17 @@
     function generateHashtags() {
         const category = document.getElementById('tagInput').value.toLowerCase().trim();
         let baseTags = "#foryou #foryoupage #fyp #viral #trending #tiktokpakistan";
-        if(category === "poetry" || category === "sad") {
-            baseTags += " #poetry #urdupoetry #lines #brokenheart";
-        } else if(category === "funny" || category === "comedy") {
-            baseTags += " #funny #comedy #joke #funnyvideos #laugh #memes";
-        } else if(category === "gaming" || category === "pubg") {
-            baseTags += " #gaming #pubg #pubgmobile #gamer #freefire #streamer";
-        } else if(category === "tech" || category === "coding") {
-            baseTags += " #tech #coding #programming #developer #technology";
-        } else if(category !== "") {
-            baseTags += ` #${category} #${category}video #${category}trend #${category}viral`;
-        }
+        if(category === "poetry" || category === "sad") { baseTags += " #poetry #urdupoetry #lines #brokenheart"; }
+        else if(category === "funny" || category === "comedy") { baseTags += " #funny #comedy #joke #funnyvideos #memes"; }
+        else if(category === "gaming" || category === "pubg") { baseTags += " #gaming #pubg #pubgmobile #gamer #freefire"; }
+        else if(category === "tech" || category === "coding") { baseTags += " #tech #coding #programming #developer"; }
+        else if(category !== "") { baseTags += ` #${category} #${category}video #${category}trend`; }
         document.getElementById('hashtagOutput').innerText = baseTags;
         document.getElementById('tagOutputBox').style.display = "block";
     }
 
-    function copyTikTokText(txt) {
-        navigator.clipboard.writeText(txt);
-        alert('Name Style Copied! ✅');
-    }
-    function copyTags() {
-        const txt = document.getElementById('hashtagOutput').innerText;
-        navigator.clipboard.writeText(txt);
-        alert('All Viral Hashtags Copied! 🚀');
-    }
+    function copyTikTokText(txt) { navigator.clipboard.writeText(txt); alert('Name Style Copied! ✅'); }
+    function copyTags() { navigator.clipboard.writeText(document.getElementById('hashtagOutput').innerText); alert('All Viral Hashtags Copied! 🚀'); }
 </script>
 </body>
 </html>
-
