@@ -6,24 +6,25 @@
     <title>CoreSec - Professional Advanced Tools Platform</title>
     
     <!-- Tab Icon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
     
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome Icons Link -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
-    <!-- Google AdSense Connected -->
+    <!-- Google AdSense Code -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        /* Sci-Fi Premium Animated Background */
+        /* Sci-Fi Live Moving Background */
         body { 
-            background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #030712);
+            background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #f8fafc; display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 20px; gap: 25px; 
+            animation: gradientBG 12s ease infinite;
+            color: #f8fafc; 
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+            min-height: 100vh; padding: 40px 20px; gap: 25px; 
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -31,72 +32,63 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Movie Style Animated Loader */
+        /* Movie Style Live Splash Screen Loader */
         #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        .loader-logo { font-size: 60px; color: #38bdf8; animation: pulse 1.5s infinite alternate; margin-bottom: 20px; }
+        .loader-logo { font-size: 55px; color: #38bdf8; animation: pulse 1.5s infinite alternate; margin-bottom: 20px; }
         .loader-text {
-            font-family: 'Courier New', Courier, monospace; color: #10b981; font-weight: bold; font-size: 22px;
-            letter-spacing: 2px; overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0;
-            animation: typing 2s steps(25, end) forwards, blink .75s step-end infinite;
+            font-family: 'Courier New', Courier, monospace;
+            color: #10b981; font-weight: bold; font-size: 20px; letter-spacing: 2px;
+            overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0;
+            animation: typing 1.5s steps(25, end) forwards, blink .75s step-end infinite;
         }
-        @keyframes pulse { to { transform: scale(1.1); text-shadow: 0 0 25px #38bdf8; } }
-        @keyframes typing { from { width: 0 } to { width: 310px } }
+        @keyframes pulse { to { transform: scale(1.1); text-shadow: 0 0 20px #38bdf8; } }
+        @keyframes typing { from { width: 0 } to { width: 290px } }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
 
-        /* Professional Navigation Bar */
-        .navbar { width: 100%; max-width: 480px; background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); padding: 12px 20px; border-radius: 30px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .nav-logo { font-weight: bold; color: #38bdf8; font-size: 18px; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-btn { background: none; border: none; color: #94a3b8; font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.2s; }
-        .nav-btn:hover, .nav-btn.active { color: #38bdf8; }
-        .login-nav-btn { background: #fe2c55; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 4px 10px rgba(254, 44, 85, 0.2); }
-        .login-nav-btn:hover { background: #e11d48; }
+        /* Navigation Header Tabs */
+        .header-nav { display: flex; gap: 15px; background: rgba(30, 41, 59, 0.7); padding: 10px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 10px; }
+        .nav-btn { background: transparent; border: none; color: #cbd5e1; cursor: pointer; font-weight: bold; font-size: 14px; transition: color 0.2s; }
+        .nav-btn:hover { color: #38bdf8; }
 
-        /* Multi-Page Interface Control */
-        .page { display: none; width: 100%; max-width: 480px; }
-        .page.active-page { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Professional 3D Glass Containers */
-        .container { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 30px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1); border: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 20px; }
-        h1, h2 { font-size: 24px; margin-bottom: 20px; text-align: center; color: #38bdf8; text-shadow: 0 2px 10px rgba(56, 189, 248, 0.2); }
-        .tiktok-title { color: #fe2c55; text-shadow: 0 2px 10px rgba(254, 44, 85, 0.2); }
-        h1 i, h2 i { margin-right: 10px; }
+        /* 3D Container Layout */
+        .container { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 30px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1); width: 100%; max-width: 460px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .pass-title { font-size: 24px; margin-bottom: 20px; text-align: center; color: #38bdf8; }
+        .tiktok-title { font-size: 24px; margin-bottom: 20px; text-align: center; color: #fe2c55; }
+        h1 i, h2 i, h3 i { margin-right: 10px; }
         
-        /* Inputs & Settings UI */
-        .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #94a3b8; font-size: 14px; }
-        input[type="text"], input[type="email"], input[type="password"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 16px; margin-bottom: 10px; outline: none; }
-        input:focus { border-color: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.3); }
-        
-        .result-container { display: flex; background: #0f172a; border-radius: 8px; padding: 14px; margin-bottom: 20px; justify-content: space-between; align-items: center; border: 1px solid #334155; }
-        #password { font-size: 18px; font-weight: bold; letter-spacing: 1px; color: #10b981; }
+        .result-container { display: flex; background: #0f172a; border-radius: 8px; padding: 14px; margin-bottom: 20px; justify-content: space-between; align-items: center; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+        #password { font-size: 18px; font-weight: bold; letter-spacing: 1px; word-break: break-all; }
         #copy { background: #38bdf8; border: none; color: #0f172a; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+        #copy:hover { background: #0ea5e9; }
         
         .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .setting label { display: flex; align-items: center; gap: 10px; font-size: 15px; }
         input[type="number"] { width: 60px; padding: 5px; border-radius: 4px; border: none; text-align: center; font-size: 16px; background: #0f172a; color: white; }
         
-        /* Buttons */
-        button.primary-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 14px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-        button.tiktok-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 13px; font-size: 17px; border-radius: 8px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #38bdf8; font-size: 14px; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 16px; margin-bottom: 10px; outline: none; }
+        textarea { height: 80px; resize: none; }
         
-        /* Style Output Lists */
+        button.generate-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 14px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        button.action-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 13px; font-size: 17px; border-radius: 8px; cursor: pointer; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
+        button.action-btn:hover { background: linear-gradient(135deg, #e11d48, #fe2c55); }
+        
         .style-item { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 14px; border-radius: 8px; margin-bottom: 12px; font-size: 18px; border-left: 4px solid #38bdf8; }
-        .style-item button { background: #2563eb; color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .style-item button { background: #2563eb; color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; }
         
         .output-box { background: #0f172a; padding: 15px; border-radius: 8px; font-size: 16px; word-break: break-all; border-left: 4px solid #fe2c55; position: relative; margin-top: 15px; color: #10b981; font-weight: bold; }
         .copy-btn { position: absolute; right: 10px; top: 10px; background: #38bdf8; color: #0f172a; padding: 4px 8px; font-size: 12px; border-radius: 4px; cursor: pointer; border: none; font-weight: bold; }
         
-        /* Privacy & Contact Page Text */
-        .legal-text { font-size: 14px; color: #cbd5e1; line-height: 1.7; }
-        .legal-text h3 { color: #38bdf8; margin: 15px 0 5px 0; font-size: 16px; }
-        
-        .seo-text { text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; background: rgba(30, 41, 59, 0.4); padding: 15px; border-radius: 12px; }
-        .footer { text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #94a3b8; width: 100%; }
+        .seo-text { max-width: 460px; text-align: center; color: #94a3b8; font-size: 14px; line-height: 1.6; margin-top: 10px; background: rgba(30, 41, 59, 0.4); padding: 15px; border-radius: 12px; }
+        .footer { width: 100%; max-width: 460px; text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #94a3b8; }
         .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 6px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; }
         @keyframes beat { to { transform: scale(1.2); } }
     </style>
@@ -106,139 +98,79 @@
 <!-- MOVIE STYLE LOADER -->
 <div id="splash-screen">
     <div class="loader-logo"><i class="fa-solid fa-terminal"></i></div>
-    <div class="loader-text">TASIR_ABBAS_PLATFORM...</div>
+    <div class="loader-text">TASIR_ABBAS_SYSTEM...</div>
 </div>
 
-<!-- PROFESSIONAL NAVIGATION BAR -->
-<div class="navbar">
-    <div class="nav-logo"><i class="fa-solid fa-layer-group"></i> CoreSec</div>
-    <div class="nav-links">
-        <button class="nav-btn active" onclick="switchPage('tools-page', this)">Tools</button>
-        <button class="nav-btn" onclick="switchPage('privacy-page', this)">Privacy</button>
-        <button class="nav-btn" onclick="switchPage('contact-page', this)">Contact</button>
-    </div>
-    <button class="login-nav-btn" onclick="switchPage('login-page', this)"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+<!-- TOP HEADER NAVIGATION TABS -->
+<div class="header-nav">
+    <button class="nav-btn" onclick="scrollToElement('tool1')">Tools</button>
+    <button class="nav-btn" onclick="scrollToElement('privacy')">Privacy</button>
+    <button class="nav-btn" onclick="scrollToElement('contact')">Contact</button>
+    <button class="nav-btn" onclick="scrollToElement('login')">Login</button>
 </div>
-<!-- PAGE 1: WEB TOOLS (MAIN INTERFACE) -->
-<div id="tools-page" class="page active-page">
-    <!-- Tool 1: Password Generator -->
-    <div class="container">
-        <h1><i class="fa-solid fa-shield-halved"></i>Password Generator</h1>
-        <div class="result-container">
-            <span id="password">SYS_READY</span>
-            <button id="copy"><i class="fa-regular fa-copy"></i> Copy</button>
-        </div>
-        <div class="settings">
-            <div class="setting">
-                <label><i class="fa-solid fa-ruler-horizontal"></i> Key Length</label>
-                <input type="number" id="length" min="4" max="20" value="12">
-            </div>
-            <div class="setting">
-                <label><i class="fa-solid fa-font"></i> Uppercase Letters</label>
-                <input type="checkbox" id="uppercase" checked>
-            </div>
-            <div class="setting">
-                <label><i class="fa-solid fa-text-height"></i> Lowercase Letters</label>
-                <input type="checkbox" id="lowercase" checked>
-            </div>
-            <div class="setting">
-                <label><i class="fa-solid fa-hashtag"></i> Include Numbers</label>
-                <input type="checkbox" id="numbers" checked>
-            </div>
-            <div class="setting">
-                <label><i class="fa-solid fa-asterisk"></i> Include Symbols</label>
-                <input type="checkbox" id="symbols" checked>
-            </div>
-        </div>
-        <button class="primary-btn" id="generate"><i class="fa-solid fa-key"></i> Generate Key</button>
-    </div>
 
-    <!-- Tool 2: TikTok Name Styler -->
-    <div class="container">
-        <h2 class="tiktok-title"><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h2>
-        <div class="input-group">
-            <label><i class="fa-solid fa-user-ninja"></i> Target Input Name</label>
-            <input type="text" id="nameInput" placeholder="Type your name..." value="Tasir Tech">
-        </div>
-        <div id="stylesContainer"></div>
+<!-- TOOL 1: PASSWORD GENERATOR -->
+<div class="container" id="tool1">
+    <h1 class="pass-title"><i class="fa-solid fa-shield-halved"></i>Password Generator</h1>
+    <div class="result-container">
+        <span id="password">Click Generate</span>
+        <button id="copy"><i class="fa-regular fa-copy"></i> Copy</button>
     </div>
-
-    <!-- Tool 3: Hashtag Generator -->
-    <div class="container">
-        <h2 class="tiktok-title"><i class="fa-solid fa-bolt"></i> Viral Hashtag Generator</h2>
-        <div class="input-group">
-            <label><i class="fa-solid fa-video"></i> Video Category (poetry, funny, tech)</label>
-            <input type="text" id="tagInput" placeholder="e.g. poetry, funny, tech" value="tech">
+    <div class="settings">
+        <div class="setting">
+            <label><i class="fa-solid fa-ruler-horizontal"></i> Password Length</label>
+            <input type="number" id="length" min="4" max="20" value="12">
         </div>
-        <button class="tiktok-btn" onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
-        <div class="output-box" id="tagOutputBox" style="display:none;">
-            <span id="hashtagOutput">Your tags...</span>
-            <button class="copy-btn" onclick="copyTags()"><i class="fa-regular fa-copy"></i> Copy All</button>
+        <div class="setting">
+            <label><i class="fa-solid fa-font"></i> Include Uppercase Letters</label>
+            <input type="checkbox" id="uppercase" checked>
+        </div>
+        <div class="setting">
+            <label><i class="fa-solid fa-text-height"></i> Include Lowercase Letters</label>
+            <input type="checkbox" id="lowercase" checked>
+        </div>
+        <div class="setting">
+            <label><i class="fa-solid fa-hashtag"></i> Include Numbers</label>
+            <input type="checkbox" id="numbers" checked>
+        </div>
+        <div class="setting">
+            <label><i class="fa-solid fa-asterisk"></i> Include Symbols</label>
+            <input type="checkbox" id="symbols" checked>
         </div>
     </div>
+    <button class="generate-btn" id="generate"><i class="fa-solid fa-key"></i> Generate Password</button>
 </div>
 
-<!-- PAGE 2: PRIVACY POLICY PAGE (AD SENSE MANDATORY) -->
-<div id="privacy-page" class="page">
-    <div class="container legal-text">
-        <h2><i class="fa-solid fa-user-shield"></i> Privacy Policy</h2>
-        <p>Welcome to CoreSec. We are committed to protecting your privacy online.</p>
-        <h3>1. Data Collection</h3>
-        <p>Our tools are client-side. We do not store or collect any passwords or names you generate on our servers. All processes run securely inside your browser.</p>
-        <h3>2. Google AdSense Cookies</h3>
-        <p>Google uses cookies to serve ads based on a user's prior visits to your website. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our sites.</p>
-        <h3>3. Consent</h3>
-        <p>By using our advanced tools platform, you hereby consent to our professional privacy policy regulations.</p>
+<!-- TOOL 2: TIKTOK NAME STYLER -->
+<div class="container">
+    <h2 class="tiktok-title"><i class="fa-brands fa-tiktok"></i> TikTok Name Styler</h2>
+    <div class="input-group">
+        <label><i class="fa-solid fa-user-ninja"></i> Enter Your Name Here</label>
+        <input type="text" id="nameInput" placeholder="Type your name..." value="Tasir Tech">
+    </div>
+    <div id="stylesContainer"></div>
+</div>
+
+<!-- TOOL 3: HASHTAG GENERATOR -->
+<div class="container">
+    <h2 class="tiktok-title"><i class="fa-solid fa-bolt"></i> Viral Hashtag Generator</h2>
+    <div class="input-group">
+    </div>
+    <button class="action-btn" onclick="generateHashtags()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Viral Tags</button>
+    
+    <div class="output-box" id="tagOutputBox" style="display:none;">
+        <span id="hashtagOutput">Your viral tags will appear here...</span>
+        <button class="copy-btn" onclick="copyTags()"><i class="fa-regular fa-copy"></i> Copy All</button>
     </div>
 </div>
 
-<!-- PAGE 3: CONTACT US FORM PAGE -->
-<div id="contact-page" class="page">
-    <div class="container">
-        <h2><i class="fa-solid fa-envelope"></i> Contact System</h2>
-        <form onsubmit="event.preventDefault(); alert('Message encrypted and sent successfully! ✅');">
-            <div class="input-group">
-                <label>Your Full Name</label>
-                <input type="text" placeholder="Enter your name..." required>
-            </div>
-            <div class="input-group">
-                <label>Secure Email Node</label>
-                <input type="email" placeholder="name@email.com" required>
-            </div>
-            <div class="input-group">
-                <label>Encrypted Message</label>
-                <input type="text" placeholder="Type your message here..." required>
-            </div>
-            <button class="primary-btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-        </form>
-    </div>
+<!-- SEO Text for Google ranking -->
+<div class="seo-text">
+    <h3>Get Famous on Social Media for Free</h3>
+    <p>Use our advanced TikTok Name Style tool to create fancy fonts with cool symbols. Generate viral trending hashtags to push your videos directly to the ForYou page instantly.</p>
 </div>
 
-<!-- PAGE 4: PROFESSIONAL LOGIN / SIGN IN GATEWAY -->
-<div id="login-page" class="page">
-    <div class="container">
-        <h2><i class="fa-solid fa-lock"></i> Developer Login Node</h2>
-        <form onsubmit="event.preventDefault(); alert('Access Denied: Invalid Cryptographic Credentials ❌');">
-            <div class="input-group">
-                <label>Admin User Node</label>
-                <input type="text" placeholder="Username or Email ID" required>
-            </div>
-            <div class="input-group">
-                <label>Security Key (Password)</label>
-                <input type="password" placeholder="••••••••" required>
-            </div>
-            <button class="tiktok-btn" type="submit"><i class="fa-solid fa-key"></i> Authenticate Node</button>
-        </form>
-    </div>
-</div>
-
-<!-- SEO RANKING BLOCK -->
-<div class="seo-text" style="width:100%; max-width:480px;">
-    <h3>Professional Web Utilities Matrix</h3>
-    <p>Secure multi-tool utility network architecture designed by an advanced developer node to deliver instant calculations, cryptographic password management, and media automation algorithms globally.</p>
-</div>
-
-<!-- PROFESSIONAL DEVELOPER FOOTER -->
+<!-- Professional Developer Footer -->
 <div class="footer">
     <p>Designed & Developed with <i class="fa-solid fa-heart" style="color: #fe2c55; animation: beat 1s infinite alternate; display: inline-block;"></i> by</p>
     <div class="badge">
@@ -247,80 +179,22 @@
 </div>
 
 <script>
-    // Movie Splash Loader Timer Logic
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const splash = document.getElementById('splash-screen');
-            splash.style.opacity = '0'; splash.style.visibility = 'hidden';
-        }, 2200);
-    });
-
-    // Multi-Page Switching Mechanism
-    function switchPage(pageId, btnElement) {
-        document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
-        document.querySelectorAll('.nav-btn, .login-nav-btn').forEach(btn => btn.classList.remove('active'));
-        
-        document.getElementById(pageId).classList.add('active-page');
-        if(btnElement) btnElement.classList.add('active');
-    }
-
-    // Password Tool Engine
-    const passwordEl = document.getElementById('password');
-    const lengthEl = document.getElementById('length');
-    const uppercaseEl = document.getElementById('uppercase');
-    const lowercaseEl = document.getElementById('lowercase');
-    const numbersEl = document.getElementById('numbers');
-    const symbolsEl = document.getElementById('symbols');
-    const generateEl = document.getElementById('generate');
-    const copyEl = document.getElementById('copy');
-
-    const randomFunc = {
-        lower: () => String.fromCharCode(Math.floor(Math.random() * 26) + 97),
-        upper: () => String.fromCharCode(Math.floor(Math.random() * 26) + 65),
-        number: () => String.fromCharCode(Math.floor(Math.random() * 10) + 48),
-        symbol: () => '!@#$%^&*(){}[]=<>/,.'[Math.floor(Math.random() * 15)]
-    };
-
-    generateEl.addEventListener('click', () => {
-        const length = +lengthEl.value;
-        const hasLower = lowercaseEl.checked;
-        const hasUpper = uppercaseEl.checked;
-        const hasNumber = numbersEl.checked;
-        const hasSymbol = symbolsEl.checked;
-        passwordEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-    });
-
-    function generatePassword(lower, upper, number, symbol, length) {
-        let generatedPassword = '';
-        const typesCount = lower + upper + number + symbol;
-        const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item));
-        if(typesCount === 0) return 'SYS_ERROR';
-        for(let i = 0; i < length; i += typesCount) {
-            typesArr.forEach(type => { generatedPassword += randomFunc[Object.keys(type)](); });
-        }
-        return generatedPassword.slice(0, length);
-    }
-
-    copyEl.addEventListener('click', () => {
-        const textarea = document.createElement('textarea');
-        const password = passwordEl.innerText;
-        if(!password || password === 'SYS_READY' || password === 'SYS_ERROR') return;
-        textarea.value = password; document.body.appendChild(textarea);
-        textarea.select(); document.execCommand('copy'); textarea.remove();
-        alert('Key Node Copied! ✅');
-    });
-
-    // TikTok Styler Engine
+    // --- TikTok Name Styles Logic ---
     const nameInput = document.getElementById('nameInput');
     const stylesContainer = document.getElementById('stylesContainer');
 
     function updateNames() {
         const val = nameInput.value || "Name";
         stylesContainer.innerHTML = `
-            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
-            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
-            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
+            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyStyleText('★彡 ${val} 彡★')">Copy</button></div>
+            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyStyleText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyStyleText('『 ${val} 』')">Copy</button></div>
+            <div class="style-item"><span>Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮</span><button onclick="copyStyleText('Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮')">Copy</button></div>
+            <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyStyleText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
+        `;
     }
+    nameInput.addEventListener('input', updateNames);
+    updateNames();
 
     // --- TikTok Hashtags Logic ---
     function generateHashtags() {
@@ -336,7 +210,7 @@
         } else if(category === "tech" || category === "coding") {
             baseTags += " #tech #coding #programming #developer #technology";
         } else if(category !== "") {
-            baseTags += ` #${category} #${category}video #${category}trend #${category}viral`;
+            baseTags += ` #${category} #${category}video #${category}trend`;
         }
         
         document.getElementById('hashtagOutput').innerText = baseTags;
@@ -344,26 +218,15 @@
     }
 
     // --- Helper Copy Functions ---
-    function copyTikTokText(txt) {
+    function copyStyleText(txt) {
         navigator.clipboard.writeText(txt);
-        alert('Name Style Copied! ✅');
+        alert('Stylish Name Copied! ✅');
     }
     
     function copyTags() {
         const txt = document.getElementById('hashtagOutput').innerText;
         navigator.clipboard.writeText(txt);
         alert('All Viral Hashtags Copied! 🚀 Ready for TikTok.');
-    }
-
-    // --- Professional Features Alerts ---
-    function showPrivacy() {
-        alert("Privacy Policy: We do not store any user data. Your privacy is 100% secure with Tasir Abbas Node Connection. ✅");
-    }
-    function showContact() {
-        alert("Contact Us: For support or queries, email us at: support@tasirdeveloper.com 📧");
-    }
-    function showLogin() {
-        alert("Login System: Database connection safe. Guest session active. 🔐");
     }
 </script>
 </body>
