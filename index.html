@@ -307,104 +307,6 @@
     function authenticateAdminNode() {
         alert("Security Alert: Connection handshake failed. Invalid Security Key Node. 🔒");
     }
-        // --- Cyber Snake Game Logic ---
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas ? canvas.getContext("2d") : null;
-    const scoreEl = document.getElementById("gameScore");
-    
-    const boxSize = 15;
-    let snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
-    let food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
-    let d = "RIGHT";
-    let score = 0;
-    let gameInterval;
-
-    function drawGame() {
-        if (!ctx) return;
-        ctx.fillStyle = "#020617";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Draw Snake
-        for (let i = 0; i < snake.length; i++) {
-            ctx.fillStyle = (i === 0) ? "#10b981" : "#34d399";
-            ctx.strokeStyle = "#020617";
-            ctx.fillRect(snake[i].x, snake[i].y, boxSize, boxSize);
-            ctx.strokeRect(snake[i].x, snake[i].y, boxSize, boxSize);
-        }
-
-        // Draw Neon Food
-        ctx.fillStyle = "#fe2c55";
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#fe2c55";
-        ctx.fillRect(food.x, food.y, boxSize, boxSize);
-        ctx.shadowBlur = 0; // Reset shadow
-
-        // Snake Movement
-        let snakeX = snake[0].x;
-        let snakeY = snake[0].y;
-
-        if (d === "LEFT") snakeX -= boxSize;
-        if (d === "UP") snakeY -= boxSize;
-        if (d === "RIGHT") snakeX += boxSize;
-        if (d === "DOWN") snakeY += boxSize;
-
-        // If snake eats food
-        if (snakeX === food.x && snakeY === food.y) {
-            score++;
-            if (scoreEl) scoreEl.innerText = score;
-            food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
-        } else {
-            snake.pop();
-        }
-
-        let newHead = { x: snakeX, y: snakeY };
-
-        // Game Over Conditions (Wall Collision or Self Collision)
-        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
-            clearInterval(gameInterval);
-            alert("GAME OVER! Your Score: " + score + " 🎮 Click reset button to replay.");
-            return;
-        }
-
-        snake.unshift(newHead);
-    }
-
-    function collision(head, array) {
-        for (let i = 0; i < array.length; i++) {
-            if (head.x === array[i].x && head.y === array[i].y) return true;
-        }
-        return false;
-    }
-
-    // Keyboard Controls for Laptop
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft" && d !== "RIGHT") d = "LEFT";
-        else if (e.key === "ArrowUp" && d !== "DOWN") d = "UP";
-        else if (e.key === "ArrowRight" && d !== "LEFT") d = "RIGHT";
-        else if (e.key === "ArrowDown" && d !== "UP") d = "DOWN";
-    });
-
-    // Mobile Control Function
-    window.changeDirection = function(dir) {
-        if (dir === "LEFT" && d !== "RIGHT") d = "LEFT";
-        if (dir === "UP" && d !== "DOWN") d = "UP";
-        if (dir === "RIGHT" && d !== "LEFT") d = "RIGHT";
-        if (dir === "DOWN" && d !== "UP") d = "DOWN";
-    };
-
-    window.resetSnakeGame = function() {
-        clearInterval(gameInterval);
-        snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
-        food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
-        d = "RIGHT";
-        score = 0;
-        if (scoreEl) scoreEl.innerText = score;
-        gameInterval = setInterval(drawGame, 150);
-    };
-
-    // Auto start game
-    gameInterval = setInterval(drawGame, 150);
-    
     // --- Smooth Cyber Snake Game Logic for Bigger Screen ---
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas ? canvas.getContext("2d") : null;
@@ -501,6 +403,7 @@
     // Auto Start Game Loop
     clearInterval(gameInterval);
     gameInterval = setInterval(drawGame, 130);
+
 
 </script>
 </body>
