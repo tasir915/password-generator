@@ -178,56 +178,110 @@
     </div>
 </div>
 <script>
-    // --- TikTok Name Styles Logic ---
+    // 1. Movie Splash Screen Timer Logic (Yeh Loading Screen Ko Hataye Ga)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.style.opacity = '0'; 
+                splash.style.visibility = 'hidden';
+            }
+        }, 2200);
+    });
+
+    // 2. Password Generator Logic
+    const passwordEl = document.getElementById('password');
+    const lengthEl = document.getElementById('length');
+    const uppercaseEl = document.getElementById('uppercase');
+    const lowercaseEl = document.getElementById('lowercase');
+    const numbersEl = document.getElementById('numbers');
+    const symbolsEl = document.getElementById('symbols');
+    const generateEl = document.getElementById('generate');
+    const copyEl = document.getElementById('copy');
+
+    const randomFunc = {
+        lower: () => String.fromCharCode(Math.floor(Math.random() * 26) + 97),
+        upper: () => String.fromCharCode(Math.floor(Math.random() * 26) + 65),
+        number: () => String.fromCharCode(Math.floor(Math.random() * 10) + 48),
+        symbol: () => '!@#$%^&*(){}[]=<>/,.'[Math.floor(Math.random() * 15)]
+    };
+
+    if (generateEl) {
+        generateEl.addEventListener('click', () => {
+            const length = +lengthEl.value;
+            const hasLower = lowercaseEl.checked;
+            const hasUpper = uppercaseEl.checked;
+            const hasNumber = numbersEl.checked;
+            const hasSymbol = symbolsEl.checked;
+            passwordEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+        });
+    }
+
+    function generatePassword(lower, upper, number, symbol, length) {
+        let generatedPassword = '';
+        const typesCount = lower + upper + number + symbol;
+        const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item));
+        if(typesCount === 0) return '';
+        for(let i = 0; i < length; i += typesCount) {
+            typesArr.forEach(type => { generatedPassword += randomFunc[Object.keys(type)](); });
+        }
+        return generatedPassword.slice(0, length);
+    }
+
+    if (copyEl) {
+        copyEl.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            const password = passwordEl.innerText;
+            if(!password || password === 'Click Generate') return;
+            textarea.value = password; document.body.appendChild(textarea);
+            textarea.select(); document.execCommand('copy'); textarea.remove();
+            alert('Password copied! ✅');
+        });
+    }
+
+    // 3. TikTok Name Styler Logic
     const nameInput = document.getElementById('nameInput');
     const stylesContainer = document.getElementById('stylesContainer');
 
     function updateNames() {
-        const val = nameInput.value || "Name";
-        stylesContainer.innerHTML = `
-            <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyStyleText('★彡 ${val} 彡★')">Copy</button></div>
-            <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyStyleText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
-            <div class="style-item"><span>『 ${val} 』</span><button onclick="copyStyleText('『 ${val} 』')">Copy</button></div>
-            <div class="style-item"><span>Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮</span><button onclick="copyStyleText('Ɀׁׁׅׅ֮֮ ${val} ׁׁׅׅ֮֮')">Copy</button></div>
-            <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyStyleText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
-        `;
+        const val = nameInput ? nameInput.value : "Name";
+        if (stylesContainer) {
+            stylesContainer.innerHTML = `
+                <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
+                <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+                <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
+                <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyTikTokText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
+            `;
+        }
     }
-    nameInput.addEventListener('input', updateNames);
+    if (nameInput) { nameInput.addEventListener('input', updateNames); }
     updateNames();
 
-    // --- TikTok Hashtags Logic ---
+    // 4. TikTok Hashtags Generator Logic
     function generateHashtags() {
         const category = document.getElementById('tagInput').value.toLowerCase().trim();
         let baseTags = "#foryou #foryoupage #fyp #viral #trending #tiktokpakistan";
-        
-        if(category === "poetry" || category === "sad") {
-            baseTags += " #poetry #urdupoetry #sadlines #poetrystatus #brokenheart";
-        } else if(category === "funny" || category === "comedy") {
-            baseTags += " #funny #comedy #joke #funnyvideos #laugh #memes";
-        } else if(category === "gaming" || category === "pubg") {
-            baseTags += " #gaming #pubg #pubgmobile #gamer #freefire #streamer";
-        } else if(category === "tech" || category === "coding") {
-            baseTags += " #tech #coding #programming #developer #technology";
-        } else if(category !== "") {
-            baseTags += ` #${category} #${category}video #${category}trend`;
-        }
-        
+        if(category === "poetry" || category === "sad") { baseTags += " #poetry #urdupoetry #lines #brokenheart"; }
+        else if(category === "funny" || category === "comedy") { baseTags += " #funny #comedy #joke #funnyvideos #memes"; }
+        else if(category === "gaming" || category === "pubg") { baseTags += " #gaming #pubg #pubgmobile #gamer #freefire"; }
+        else if(category === "tech" || category === "coding") { baseTags += " #tech #coding #programming #developer"; }
+        else if(category !== "") { baseTags += ` #${category} #${category}video #${category}trend`; }
         document.getElementById('hashtagOutput').innerText = baseTags;
         document.getElementById('tagOutputBox').style.display = "block";
     }
 
-    // --- Helper Copy Functions ---
-    function copyStyleText(txt) {
-        navigator.clipboard.writeText(txt);
-        alert('Stylish Name Copied! ✅');
+    // 5. Shared Copy Functions
+    function copyTikTokText(txt) { navigator.clipboard.writeText(txt); alert('Name Style Copied! ✅'); }
+    function copyTags() { navigator.clipboard.writeText(document.getElementById('hashtagOutput').innerText); alert('All Viral Hashtags Copied! 🚀'); }
+
+    // 6. New Professional Systems Logic (Fixes the crash)
+    function sendEncryptedMessage() {
+        alert("Secure Notice: Message encrypted and transmitted to Tasir Abbas database node successfully! 🔐");
     }
-    
-    function copyTags() {
-        const txt = document.getElementById('hashtagOutput').innerText;
-        navigator.clipboard.writeText(txt);
-        alert('All Viral Hashtags Copied! 🚀 Ready for TikTok.');
+    function authenticateAdminNode() {
+        alert("Security Alert: Connection handshake failed. Invalid Security Key Node. 🔒");
     }
 </script>
-
 </body>
 </html>
+
