@@ -183,8 +183,103 @@
         <button style="width: 65px; height: 50px; background: #1e293b; border: 2px solid #38bdf8; color: #38bdf8; border-radius: 8px; font-size: 24px; font-weight: bold; cursor: pointer;" onclick="changeDirection('DOWN')">▼</button>
     </div>
 </div>
-
 <script>
+    // 1. Movie Splash Screen Timer Logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.style.opacity = '0'; 
+                splash.style.visibility = 'hidden';
+            }
+        }, 2200);
+    });
+
+    // 2. Password Generator Logic
+    const passwordEl = document.getElementById('password');
+    const lengthEl = document.getElementById('length');
+    const uppercaseEl = document.getElementById('uppercase');
+    const lowercaseEl = document.getElementById('lowercase');
+    const numbersEl = document.getElementById('numbers');
+    const symbolsEl = document.getElementById('symbols');
+    const generateEl = document.getElementById('generate');
+    const copyEl = document.getElementById('copy');
+
+    const randomFunc = {
+        lower: () => String.fromCharCode(Math.floor(Math.random() * 26) + 97),
+        upper: () => String.fromCharCode(Math.floor(Math.random() * 26) + 65),
+        number: () => String.fromCharCode(Math.floor(Math.random() * 10) + 48),
+        symbol: () => '!@#$%^&*(){}[]=<>/,.'[Math.floor(Math.random() * 15)]
+    };
+
+    if (generateEl) {
+        generateEl.addEventListener('click', () => {
+            const length = +lengthEl.value;
+            const hasLower = lowercaseEl.checked;
+            const hasUpper = uppercaseEl.checked;
+            const hasNumber = numbersEl.checked;
+            const hasSymbol = symbolsEl.checked;
+            passwordEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+        });
+    }
+
+    function generatePassword(lower, upper, number, symbol, length) {
+        let generatedPassword = '';
+        const typesCount = lower + upper + number + symbol;
+        const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item));
+        if(typesCount === 0) return '';
+        for(let i = 0; i < length; i += typesCount) {
+            typesArr.forEach(type => { generatedPassword += randomFunc[Object.keys(type)](); });
+        }
+        return generatedPassword.slice(0, length);
+    }
+
+    if (copyEl) {
+        copyEl.addEventListener('click', () => {
+            const textarea = document.createElement('textarea');
+            const password = passwordEl.innerText;
+            if(!password || password === 'Click Generate') return;
+            textarea.value = password; document.body.appendChild(textarea);
+            textarea.select(); document.execCommand('copy'); textarea.remove();
+            alert('Password copied! ✅');
+        });
+    }
+
+    // 3. TikTok Name Styler Logic
+    const nameInput = document.getElementById('nameInput');
+    const stylesContainer = document.getElementById('stylesContainer');
+
+    function updateNames() {
+        const val = nameInput ? nameInput.value : "Name";
+        if (stylesContainer) {
+            stylesContainer.innerHTML = `
+                <div class="style-item"><span>★彡 ${val} 彡★</span><button onclick="copyTikTokText('★彡 ${val} 彡★')">Copy</button></div>
+                <div class="style-item"><span>꧁☠︎ ${val} ☠︎꧂</span><button onclick="copyTikTokText('꧁☠︎ ${val} ☠︎꧂')">Copy</button></div>
+                <div class="style-item"><span>『 ${val} 』</span><button onclick="copyTikTokText('『 ${val} 』')">Copy</button></div>
+                <div class="style-item"><span>🆃    🆃🅾🆄 ${val}</span><button onclick="copyTikTokText('🆃    🆃🅾🆄 ${val}')">Copy</button></div>
+            `;
+        }
+    }
+    if (nameInput) { nameInput.addEventListener('input', updateNames); }
+    updateNames();
+
+    // 4. TikTok Hashtags Generator Logic
+    function generateHashtags() {
+        const category = document.getElementById('tagInput').value.toLowerCase().trim();
+        let baseTags = "#foryou #foryoupage #fyp #viral #trending #tiktokpakistan";
+        if(category === "poetry" || category === "sad") { baseTags += " #poetry #urdupoetry #lines #brokenheart"; }
+        else if(category === "funny" || category === "comedy") { baseTags += " #funny #comedy #joke #funnyvideos #memes"; }
+        else if(category === "gaming" || category === "pubg") { baseTags += " #gaming #pubg #pubgmobile #gamer #freefire"; }
+        else if(category === "tech" || category === "coding") { baseTags += " #tech #coding #programming #developer"; }
+        else if(category !== "") { baseTags += ` #${category} #${category}video #${category}trend`; }
+        document.getElementById('hashtagOutput').innerText = baseTags;
+        document.getElementById('tagOutputBox').style.display = "block";
+    }
+
+    function copyTikTokText(txt) { navigator.clipboard.writeText(txt); alert('Name Style Copied! ✅'); }
+    function copyTags() { navigator.clipboard.writeText(document.getElementById('hashtagOutput').innerText); alert('All Viral Hashtags Copied! 🚀'); }
+
+    // 5. Cyber Snake Pro Game Logic (Fixed Crash)
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas ? canvas.getContext("2d") : null;
     const scoreEl = document.getElementById("gameScore");
@@ -201,13 +296,11 @@
         ctx.fillStyle = "#020617";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Draw Snake Fix
         for (let i = 0; i < snake.length; i++) {
             ctx.fillStyle = (i === 0) ? "#10b981" : "#34d399";
             ctx.fillRect(snake[i].x, snake[i].y, boxSize - 1, boxSize - 1);
         }
 
-        // Draw Food
         ctx.fillStyle = "#fe2c55";
         ctx.fillRect(food.x, food.y, boxSize - 1, boxSize - 1);
 
