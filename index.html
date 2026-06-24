@@ -165,28 +165,32 @@
 </div>
 
 <!-- SEO Text for Google ranking -->
-   <!-- TOOL 4: PREMIUM CYBER SNAKE GAME -->
-<div class="container" style="text-align: center;">
-    <h2 class="tiktok-title" style="color: #10b981;"><i class="fa-solid fa-gamepad"></i> Cyber Snake Game</h2>
-    <div style="font-size: 14px; color: #94a3b8; margin-bottom: 10px;">Score: <span id="gameScore" style="color: #38bdf8; font-weight: bold;">0</span></div>
+ <!-- TOOL 4: BIGGER & SMOOTHER CYBER SNAKE GAME WITH 3D BUTTONS -->
+<div class="container" style="text-align: center; background: rgba(15, 23, 42, 0.85); border: 1px solid #10b981; box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15); max-width: 480px;">
+    <h2 class="tiktok-title" style="color: #10b981; margin-bottom: 5px;"><i class="fa-solid fa-gamepad"></i> Cyber Snake Pro</h2>
+    <div style="font-size: 15px; color: #94a3b8; margin-bottom: 12px; font-family: monospace;">SCORE_NODE: <span id="gameScore" style="color: #38bdf8; font-weight: bold; font-size: 18px;">0</span></div>
     
-    <!-- Game Canvas Screen -->
-    <canvas id="gameCanvas" width="300" height="300" style="background: #020617; border: 2px solid #10b981; border-radius: 8px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); display: block; margin: 0 auto 15px auto;"></canvas>
+    <!-- BIGGER Smooth Canvas Screen -->
+    <canvas id="gameCanvas" width="400" height="400" style="background: #020617; border: 2px solid #334155; border-radius: 12px; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); display: block; margin: 0 auto 20px auto; max-width: 100%;"></canvas>
     
-    <!-- Mobile Touch Controls -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 180px; margin: 0 auto;">
-        <td></td>
-        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('UP')"><i class="fa-solid fa-arrow-up"></i></button>
-        <td></td>
-        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('LEFT')"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="action-btn" style="padding: 10px; background: #ef4444;" onclick="resetSnakeGame()"><i class="fa-solid fa-rotate-right"></i></button>
-        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('RIGHT')"><i class="fa-solid fa-arrow-right"></i></button>
-        <td></td>
-        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('DOWN')"><i class="fa-solid fa-arrow-down"></i></button>
-        <td></td>
+    <!-- Modern Visible Gaming Touch Pad Controls -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0 auto; max-width: 220px;">
+        <!-- UP -->
+        <button class="action-btn" style="width: 65px; height: 55px; background: #1e293b; border: 2px solid #38bdf8; color: #38bdf8; border-radius: 8px; font-size: 22px; box-shadow: 0 4px 8px rgba(56, 189, 248, 0.2); cursor: pointer;" onclick="changeDirection('UP')"><i class="fa-solid fa-chevron-up"></i></button>
+        
+        <!-- LEFT, RESET, RIGHT -->
+        <div style="display: flex; gap: 12px; justify-content: center; width: 100%;">
+            <button class="action-btn" style="width: 65px; height: 55px; background: #1e293b; border: 2px solid #38bdf8; color: #38bdf8; border-radius: 8px; font-size: 22px; box-shadow: 0 4px 8px rgba(56, 189, 248, 0.2); cursor: pointer;" onclick="changeDirection('LEFT')"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="action-btn" style="width: 65px; height: 55px; background: #7f1d1d; border: 2px solid #ef4444; color: #ef4444; border-radius: 8px; font-size: 18px; box-shadow: 0 4px 8px rgba(239, 68, 68, 0.2); cursor: pointer;" onclick="resetSnakeGame()"><i class="fa-solid fa-rotate"></i></button>
+            <button class="action-btn" style="width: 65px; height: 55px; background: #1e293b; border: 2px solid #38bdf8; color: #38bdf8; border-radius: 8px; font-size: 22px; box-shadow: 0 4px 8px rgba(56, 189, 248, 0.2); cursor: pointer;" onclick="changeDirection('RIGHT')"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        
+        <!-- DOWN -->
+        <button class="action-btn" style="width: 65px; height: 55px; background: #1e293b; border: 2px solid #38bdf8; color: #38bdf8; border-radius: 8px; font-size: 22px; box-shadow: 0 4px 8px rgba(56, 189, 248, 0.2); cursor: pointer;" onclick="changeDirection('DOWN')"><i class="fa-solid fa-chevron-down"></i></button>
     </div>
 </div>
- 
+
+
 <div class="seo-text">
     <h3>Get Famous on Social Media for Free</h3>
     <p>Use our advanced TikTok Name Style tool to create fancy fonts with cool symbols. Generate viral trending hashtags to push your videos directly to the ForYou page instantly.</p>
@@ -401,6 +405,102 @@
     // Auto start game
     gameInterval = setInterval(drawGame, 150);
     
+    // --- Smooth Cyber Snake Game Logic for Bigger Screen ---
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas ? canvas.getContext("2d") : null;
+    const scoreEl = document.getElementById("gameScore");
+    
+    const boxSize = 20; // Bigger grid size
+    let snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
+    let food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+    let d = "RIGHT";
+    let score = 0;
+    let gameInterval;
+
+    function drawGame() {
+        if (!ctx) return;
+        ctx.fillStyle = "#020617";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Smooth Glow Snake
+        for (let i = 0; i < snake.length; i++) {
+            ctx.fillStyle = (i === 0) ? "#10b981" : "#34d399";
+            ctx.shadowBlur = (i === 0) ? 10 : 0;
+            ctx.shadowColor = "#10b981";
+            ctx.fillRect(snake[i].x, snake[i].y, boxSize - 1, boxSize - 1);
+            ctx.shadowBlur = 0;
+        }
+
+        // Neon Target Food
+        ctx.fillStyle = "#fe2c55";
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "#fe2c55";
+        ctx.fillRect(food.x, food.y, boxSize - 1, boxSize - 1);
+        ctx.shadowBlur = 0;
+
+        let snakeX = snake.x;
+        let snakeY = snake.y;
+
+        if (d === "LEFT") snakeX -= boxSize;
+        if (d === "UP") snakeY -= boxSize;
+        if (d === "RIGHT") snakeX += boxSize;
+        if (d === "DOWN") snakeY += boxSize;
+
+        if (snakeX === food.x && snakeY === food.y) {
+            score++;
+            if (scoreEl) scoreEl.innerText = score;
+            food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+        } else {
+            snake.pop();
+        }
+
+        let newHead = { x: snakeX, y: snakeY };
+
+        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
+            clearInterval(gameInterval);
+            alert("SYSTEM OVER! Final Score: " + score + " 🎮 Press Red Button to Reboot Node.");
+            return;
+        }
+
+        snake.unshift(newHead);
+    }
+
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x === array[i].x && head.y === array[i].y) return true;
+        }
+        return false;
+    }
+
+    // Keyboard Controls
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" && d !== "RIGHT") d = "LEFT";
+        else if (e.key === "ArrowUp" && d !== "DOWN") d = "UP";
+        else if (e.key === "ArrowRight" && d !== "LEFT") d = "RIGHT";
+        else if (e.key === "ArrowDown" && d !== "UP") d = "DOWN";
+    });
+
+    // Visible Buttons Control Functions
+    window.changeDirection = function(dir) {
+        if (dir === "LEFT" && d !== "RIGHT") d = "LEFT";
+        if (dir === "UP" && d !== "DOWN") d = "UP";
+        if (dir === "RIGHT" && d !== "LEFT") d = "RIGHT";
+        if (dir === "DOWN" && d !== "UP") d = "DOWN";
+    };
+
+    window.resetSnakeGame = function() {
+        clearInterval(gameInterval);
+        snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
+        food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+        d = "RIGHT";
+        score = 0;
+        if (scoreEl) scoreEl.innerText = score;
+        gameInterval = setInterval(drawGame, 130);
+    };
+
+    // Auto Start Game Loop
+    clearInterval(gameInterval);
+    gameInterval = setInterval(drawGame, 130);
 
 </script>
 </body>
