@@ -165,6 +165,28 @@
 </div>
 
 <!-- SEO Text for Google ranking -->
+   <!-- TOOL 4: PREMIUM CYBER SNAKE GAME -->
+<div class="container" style="text-align: center;">
+    <h2 class="tiktok-title" style="color: #10b981;"><i class="fa-solid fa-gamepad"></i> Cyber Snake Game</h2>
+    <div style="font-size: 14px; color: #94a3b8; margin-bottom: 10px;">Score: <span id="gameScore" style="color: #38bdf8; font-weight: bold;">0</span></div>
+    
+    <!-- Game Canvas Screen -->
+    <canvas id="gameCanvas" width="300" height="300" style="background: #020617; border: 2px solid #10b981; border-radius: 8px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); display: block; margin: 0 auto 15px auto;"></canvas>
+    
+    <!-- Mobile Touch Controls -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 180px; margin: 0 auto;">
+        <td></td>
+        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('UP')"><i class="fa-solid fa-arrow-up"></i></button>
+        <td></td>
+        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('LEFT')"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="action-btn" style="padding: 10px; background: #ef4444;" onclick="resetSnakeGame()"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('RIGHT')"><i class="fa-solid fa-arrow-right"></i></button>
+        <td></td>
+        <button class="action-btn" style="padding: 10px; background: #38bdf8;" onclick="changeDirection('DOWN')"><i class="fa-solid fa-arrow-down"></i></button>
+        <td></td>
+    </div>
+</div>
+ 
 <div class="seo-text">
     <h3>Get Famous on Social Media for Free</h3>
     <p>Use our advanced TikTok Name Style tool to create fancy fonts with cool symbols. Generate viral trending hashtags to push your videos directly to the ForYou page instantly.</p>
@@ -281,6 +303,104 @@
     function authenticateAdminNode() {
         alert("Security Alert: Connection handshake failed. Invalid Security Key Node. 🔒");
     }
+        // --- Cyber Snake Game Logic ---
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas ? canvas.getContext("2d") : null;
+    const scoreEl = document.getElementById("gameScore");
+    
+    const boxSize = 15;
+    let snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
+    let food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+    let d = "RIGHT";
+    let score = 0;
+    let gameInterval;
+
+    function drawGame() {
+        if (!ctx) return;
+        ctx.fillStyle = "#020617";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Snake
+        for (let i = 0; i < snake.length; i++) {
+            ctx.fillStyle = (i === 0) ? "#10b981" : "#34d399";
+            ctx.strokeStyle = "#020617";
+            ctx.fillRect(snake[i].x, snake[i].y, boxSize, boxSize);
+            ctx.strokeRect(snake[i].x, snake[i].y, boxSize, boxSize);
+        }
+
+        // Draw Neon Food
+        ctx.fillStyle = "#fe2c55";
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#fe2c55";
+        ctx.fillRect(food.x, food.y, boxSize, boxSize);
+        ctx.shadowBlur = 0; // Reset shadow
+
+        // Snake Movement
+        let snakeX = snake[0].x;
+        let snakeY = snake[0].y;
+
+        if (d === "LEFT") snakeX -= boxSize;
+        if (d === "UP") snakeY -= boxSize;
+        if (d === "RIGHT") snakeX += boxSize;
+        if (d === "DOWN") snakeY += boxSize;
+
+        // If snake eats food
+        if (snakeX === food.x && snakeY === food.y) {
+            score++;
+            if (scoreEl) scoreEl.innerText = score;
+            food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+        } else {
+            snake.pop();
+        }
+
+        let newHead = { x: snakeX, y: snakeY };
+
+        // Game Over Conditions (Wall Collision or Self Collision)
+        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
+            clearInterval(gameInterval);
+            alert("GAME OVER! Your Score: " + score + " 🎮 Click reset button to replay.");
+            return;
+        }
+
+        snake.unshift(newHead);
+    }
+
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x === array[i].x && head.y === array[i].y) return true;
+        }
+        return false;
+    }
+
+    // Keyboard Controls for Laptop
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" && d !== "RIGHT") d = "LEFT";
+        else if (e.key === "ArrowUp" && d !== "DOWN") d = "UP";
+        else if (e.key === "ArrowRight" && d !== "LEFT") d = "RIGHT";
+        else if (e.key === "ArrowDown" && d !== "UP") d = "DOWN";
+    });
+
+    // Mobile Control Function
+    window.changeDirection = function(dir) {
+        if (dir === "LEFT" && d !== "RIGHT") d = "LEFT";
+        if (dir === "UP" && d !== "DOWN") d = "UP";
+        if (dir === "RIGHT" && d !== "LEFT") d = "RIGHT";
+        if (dir === "DOWN" && d !== "UP") d = "DOWN";
+    };
+
+    window.resetSnakeGame = function() {
+        clearInterval(gameInterval);
+        snake = [{ x: 10 * boxSize, y: 10 * boxSize }];
+        food = { x: Math.floor(Math.random() * 20) * boxSize, y: Math.floor(Math.random() * 20) * boxSize };
+        d = "RIGHT";
+        score = 0;
+        if (scoreEl) scoreEl.innerText = score;
+        gameInterval = setInterval(drawGame, 150);
+    };
+
+    // Auto start game
+    gameInterval = setInterval(drawGame, 150);
+
 </script>
 </body>
 </html>
