@@ -1,0 +1,125 @@
+        .claim-btn:hover { background: #1d4ed8; }
+
+        /* Input Field Node */
+        .uid-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 15px; margin-bottom: 12px; outline: none; text-align: center; }
+        .uid-input:focus { border-color: #38bdf8; }
+
+        .footer { width: 100%; max-width: 450px; text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: #64748b; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #38bdf8, #10b981); color: #0f172a; padding: 5px 12px; border-radius: 20px; font-weight: bold; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<!-- APP MODULE HEADER -->
+<div class="app-header">
+    <div class="app-title"><i class="fa-solid fa-bolt"></i> Grena Top-Up PK</div>
+    <div class="developer-tag">// CORE ENGINE BY TASIR ABBAS</div>
+</div>
+
+<!-- WALLET NODE SYSTEM -->
+<div class="wallet-card">
+    <div>
+        <div class="wallet-label">YOUR COIN NODE</div>
+        <div class="wallet-balance"><i class="fa-solid fa-coins" style="color: #eab308;"></i> <span id="coinBalance">0</span></div>
+    </div>
+    <div style="text-align: right;">
+        <div class="wallet-label">STATUS</div>
+        <div style="color: #10b981; font-weight: bold; font-size: 14px;"><i class="fa-solid fa-circle-check"></i> SECURE_GUEST</div>
+    </div>
+</div>
+
+<div class="app-container">
+    <!-- AD ENGINE TASKS MODULE -->
+    <div class="section-box">
+        <div class="section-title"><i class="fa-solid fa-video" style="color: #fe2c55;"></i> Rewarded Video Terminal</div>
+        
+        <div class="task-card">
+            <div class="task-info">
+                <h4>Watch Secure Ad Node 1</h4>
+                <p>Reward: +25 Coins</p>
+            </div>
+            <button class="watch-btn" onclick="watchVideoAd(1)">WATCH</button>
+        </div>
+        
+        <div class="task-card">
+            <div class="task-info">
+                <h4>Watch Secure Ad Node 2</h4>
+                <p>Reward: +25 Coins</p>
+            </div>
+            <button class="watch-btn" onclick="watchVideoAd(2)">WATCH</button>
+        </div>
+    </div>
+
+    <!-- PLAYER UID NODE VALIDATOR -->
+    <div class="section-box">
+        <div class="section-title"><i class="fa-solid fa-id-card" style="color: #38bdf8;"></i> Player Authentication Matrix</div>
+        <input type="text" id="playerUID" class="uid-input" placeholder="Enter Free Fire UID or PUBG ID (e.g. 543912)">
+    </div>
+
+    <!-- DIGITAL EXCHANGE STORE -->
+    <div class="section-box">
+        <div class="section-title"><i class="fa-solid fa-basket-shopping" style="color: #10b981;"></i> Discount Top-Up Market</div>
+        <div class="store-grid">
+            <div class="store-item">
+                <div style="font-size: 24px;">💎</div>
+                <div style="font-weight: bold; font-size: 14px;">13 Diamonds (FF)</div>
+                <div class="item-cost">Cost: 600 Coins</div>
+                <div style="font-size: 11px; color: #94a3b8;">+ Rs. 17 Cash Only</div>
+                <button class="claim-btn" onclick="claimReward('13 Diamonds', 600)">CLAIM VOUCHER</button>
+            </div>
+            <div class="store-item">
+                <div style="font-size: 24px;">⚔️</div>
+                <div style="font-weight: bold; font-size: 14px;">8 UC Voucher (PUBG)</div>
+                <div class="item-cost">Cost: 600 Coins</div>
+                <div style="font-size: 11px; color: #94a3b8;">+ Rs. 18 Cash Only</div>
+                <button class="claim-btn" onclick="claimReward('8 UC', 600)">CLAIM VOUCHER</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Grena Top-Up PK © 2026 App Node System</p>
+    <div class="badge">Tasir Abbas Developer Taunsa</div>
+</div>
+
+<script>
+    // Real Local Wallet State Tracking
+    let userCoins = parseInt(localStorage.getItem('tasir_coins')) || 0;
+    document.getElementById('coinBalance').innerText = userCoins;
+
+    // Ad Trigger Logic & Calculations
+    function watchVideoAd(nodeId) {
+        alert("Initializing Garena Ad Server Handshake... 🎬 [Loading Rewarded Video Video Node " + nodeId + "]");
+        
+        // Simulating ad calculation reward credit after 2 seconds
+        setTimeout(() => {
+            userCoins += 25;
+            localStorage.setItem('tasir_coins', userCoins);
+            document.getElementById('coinBalance').innerText = userCoins;
+            alert("Video Node " + nodeId + " Processed Successfully! ✅\n+25 Coins added to your secure balance node.");
+        }, 2000);
+    }
+
+    // Voucher Redemption Logic 
+    function claimReward(itemName, coinCost) {
+        const uid = document.getElementById('playerUID').value.trim();
+        
+        if (!uid) {
+            alert("Security Alert: Player Game UID is completely blank! Please enter your UID first. ❌");
+            return;
+        }
+        if (userCoins < coinCost) {
+            alert("Transaction Failed: Insufficient Coin Balance Node! ❌\nYou need " + (coinCost - userCoins) + " more coins. Watch ads to get a discount!");
+            return;
+        }
+
+        userCoins -= coinCost;
+        localStorage.setItem('tasir_coins', userCoins);
+        document.getElementById('coinBalance').innerText = userCoins;
+        
+        alert("Voucher Reserved Successfully! 🎉\n\nItem: " + itemName + "\nTarget Game UID: " + uid + "\n\nInstructions: Send a screenshot of this success note to Tasir Abbas WhatsApp. Pay the wholesale discount price via EasyPaisa to activate your UID Top-Up! 📱⚡");
+    }
+</script>
+</body>
+</html>
