@@ -29,6 +29,18 @@
 </div>
 
 <div class="app-container">
+    <!-- TIKTOK FOLLOW TASKS MODULE -->
+    <div class="section-box">
+        <div class="section-title"><i class="fa-brands fa-tiktok" style="color: #00f2fe;"></i> Developer Growth Task</div>
+        <div class="task-card">
+            <div class="task-info">
+                <h4>Follow Tasir Developer</h4>
+                <p>Reward: +100 Coins 🔥</p>
+            </div>
+            <button id="tiktokTaskBtn" class="tiktok-btn" onclick="followTikTokTask()">FOLLOW</button>
+        </div>
+    </div>
+
     <!-- AD ENGINE TASKS MODULE -->
     <div class="section-box">
         <div class="section-title"><i class="fa-solid fa-video" style="color: #fe2c55;"></i> Rewarded Video Terminal</div>
@@ -84,15 +96,50 @@
 </div>
 
 <script>
-    // Real Local Wallet State Tracking
     let userCoins = parseInt(localStorage.getItem('tasir_coins')) || 0;
     document.getElementById('coinBalance').innerText = userCoins;
 
-    // Ad Trigger Logic & Calculations
+    // Real TikTok Follow Redirection and Points Logic
+    function followTikTokTask() {
+        if (localStorage.getItem('tiktok_followed') === 'true') {
+            alert("Security Node: You have already completed this follow task! ❌");
+            return;
+        }
+
+        alert("Redirecting to Tasir Developer TikTok Node... 🚀\nFollow the account, then return to the app to claim +100 Coins!");
+        
+        // Opens your real TikTok profile in a new mobile tab
+        window.open("https://tiktok.com", "_blank");
+
+        // Gives +100 points after they return and locks the task so they can't spam it
+        setTimeout(() => {
+            userCoins += 100;
+            localStorage.setItem('tasir_coins', userCoins);
+            localStorage.setItem('tiktok_followed', 'true');
+            document.getElementById('coinBalance').innerText = userCoins;
+            
+            const btn = document.getElementById('tiktokTaskBtn');
+            if(btn) {
+                btn.innerText = "CLAIMED";
+                btn.style.background = "#334155";
+                btn.disabled = true;
+            }
+            alert("Verification Handshake Success! ✅\n+100 Coins credited to your wallet for following Tasir Abbas!");
+        }, 3000);
+    }
+
+    // Checking task state on page load
+    if (localStorage.getItem('tiktok_followed') === 'true') {
+        const btn = document.getElementById('tiktokTaskBtn');
+        if(btn) {
+            btn.innerText = "CLAIMED";
+            btn.style.background = "#334155";
+            btn.disabled = true;
+        }
+    }
+
     function watchVideoAd(nodeId) {
         alert("Initializing Garena Ad Server Handshake... 🎬 [Loading Rewarded Video Video Node " + nodeId + "]");
-        
-        // Simulating ad calculation reward credit after 2 seconds
         setTimeout(() => {
             userCoins += 25;
             localStorage.setItem('tasir_coins', userCoins);
@@ -101,23 +148,19 @@
         }, 2000);
     }
 
-    // Voucher Redemption Logic 
     function claimReward(itemName, coinCost) {
         const uid = document.getElementById('playerUID').value.trim();
-        
         if (!uid) {
             alert("Security Alert: Player Game UID is completely blank! Please enter your UID first. ❌");
             return;
         }
         if (userCoins < coinCost) {
-            alert("Transaction Failed: Insufficient Coin Balance Node! ❌\nYou need " + (coinCost - userCoins) + " more coins. Watch ads to get a discount!");
+            alert("Transaction Failed: Insufficient Coin Balance Node! ❌\nYou need " + (coinCost - userCoins) + " more coins.");
             return;
         }
-
         userCoins -= coinCost;
         localStorage.setItem('tasir_coins', userCoins);
         document.getElementById('coinBalance').innerText = userCoins;
-        
         alert("Voucher Reserved Successfully! 🎉\n\nItem: " + itemName + "\nTarget Game UID: " + uid + "\n\nInstructions: Send a screenshot of this success note to Tasir Abbas WhatsApp. Pay the wholesale discount price via EasyPaisa to activate your UID Top-Up! 📱⚡");
     }
 </script>
